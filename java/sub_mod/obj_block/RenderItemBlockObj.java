@@ -1,10 +1,10 @@
 package sub_mod.obj_block;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
 
 public class RenderItemBlockObj implements IItemRenderer {
 
@@ -23,7 +23,7 @@ public class RenderItemBlockObj implements IItemRenderer {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(RenderTileEntityObj.texture);
-		RenderTileEntityObj.model.renderAll();
+		GL11.glCallList(ProxyClient.displayList[0]);
 		GL11.glPopMatrix();
 	}
 
